@@ -5,6 +5,7 @@
   "description": "Playwright scripts for extending and reading PythonAnywhere web app expiry dates.",
   "scripts": {
     "extend": "node scripts/extend-run-until.js",
+    "extend:scheduled": "bash scripts/extend-if-due.sh",
     "get-date": "node scripts/get-best-before-date.js",
     "install:browsers": "npx playwright install chromium"
   },

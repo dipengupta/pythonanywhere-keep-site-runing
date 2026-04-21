@@ -40,6 +40,27 @@ Extend the app by clicking "Run until 1 month from today":
 npm run extend
 ```
 
+Run the scheduled wrapper manually:
+
+```bash
+npm run extend:scheduled
+```
+
+That wrapper:
+
+- runs at most once every 15 days after the previous successful extend
+- runs `npm run get-date` first
+- runs `npm run extend` only if `npm run get-date` exits successfully and returns output
+- writes logs to `logs/extend-if-due.log`
+
+Install the cron job:
+
+```cron
+0 9 * * * PATH=/home/dipen/.nvm/versions/node/v22.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/bin/env bash /home/dipen/Desktop/codebases/pythonanywhere-keep-site-runing/scripts/extend-if-due.sh
+```
+
+The cron job checks daily at 9:00 AM. The wrapper performs the 15-day interval check, so if an extend fails it will retry on the next daily cron run instead of waiting another 15 days.
+
 Run visibly while debugging:
 
 ```bash
