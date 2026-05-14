@@ -10,7 +10,8 @@ const WEBAPP_NAME = process.env.PYTHONANYWHERE_WEBAPP_NAME;
 const HEADLESS = process.env.HEADLESS !== "false";
 const SLOW_MO_MS = Number(process.env.SLOW_MO_MS || 0);
 const AUTH_DIR = path.join(process.cwd(), ".auth");
-const STORAGE_STATE = path.join(AUTH_DIR, "pythonanywhere.json");
+const STORAGE_STATE = process.env.PYTHONANYWHERE_AUTH_FILE
+  || path.join(AUTH_DIR, "pythonanywhere.json");
 const BEST_BEFORE_PATTERN = /This site will be disabled on\s+([A-Za-z]+,?\s+\d{1,2}\s+[A-Za-z]+\s+\d{4})/i;
 
 function requireConfig() {

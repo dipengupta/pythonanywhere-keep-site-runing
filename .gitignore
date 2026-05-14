@@ -1,5 +1,6 @@
 node_modules/
-.env
+.env.escape-sequence
+.env.personal-site
 .auth/
 .cron-state/
 logs/
